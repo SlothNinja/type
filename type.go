@@ -3,7 +3,6 @@ package gtype
 import (
 	"strings"
 
-	"github.com/SlothNinja/user"
 	"github.com/gin-gonic/gin"
 )
 
@@ -138,16 +137,16 @@ func rtypes() GTypes {
 	return gts
 }
 
-func SetTypes() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		switch _, ok := c.Get("cuser"); {
-		case !ok, !user.IsAdmin(c):
-			c.Set("types", rtypes())
-		default:
-			c.Set("types", Types)
-		}
-	}
-}
+// func SetTypes() gin.HandlerFunc {
+// 	return func(c *gin.Context) {
+// 		switch _, ok := c.Get("cuser"); {
+// 		case !ok, !user.IsAdmin(c):
+// 			c.Set("types", rtypes())
+// 		default:
+// 			c.Set("types", Types)
+// 		}
+// 	}
+// }
 
 func Get(c *gin.Context) Type {
 	ltype := strings.ToLower(c.Param("type"))
